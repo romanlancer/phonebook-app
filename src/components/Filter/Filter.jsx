@@ -7,11 +7,7 @@ class Filter extends Component {
     return (
       <div className={styles.wrapper}>
         <p className={styles.text}>Find contacts by name</p>
-        <input
-          name="filter"
-          value={this.props.filter}
-          onChange={e => this.props.onInput(e)}
-        />
+        <input name="filter" onChange={e => this.props.onInput(e)} />
       </div>
     );
   }

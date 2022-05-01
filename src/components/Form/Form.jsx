@@ -3,6 +3,7 @@ import shortid from 'shortid';
 import { TiUserAddOutline } from 'react-icons/ti';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import styles from './styles.module.css';
+import PropTypes from 'prop-types';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 
@@ -35,6 +36,8 @@ class Form extends Component {
     const { name, value } = e.currentTarget;
 
     this.setState({ isDisabled: false, [name]: value });
+    console.log(this.props.contacts);
+
     const contactFinder = this.props.contacts.find(
       contact =>
         contact.name.toLowerCase() === value.toLowerCase() ||
@@ -90,5 +93,16 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  addContact: PropTypes.func,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ),
+};
 
 export default Form;

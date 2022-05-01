@@ -28,7 +28,8 @@ Contacts.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
-  filtered: PropTypes.func,
+  filteredContacts: PropTypes.func,
+  deleteContact: PropTypes.func,
 };
 
 export default Contacts;
