@@ -17,7 +17,11 @@ button {
 }
 
 body {
-  margin: 0;
+  background-image: url(./depositphotos_8138615-stock-photo-old-style-phone-over-yellow.jpg);
+
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: 0% 50%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
