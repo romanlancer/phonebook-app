@@ -10,7 +10,7 @@ class Filter extends Component {
         <input
           name="filter"
           value={this.props.filter}
-          onChange={e => this.props.onFilterInput(e)}
+          onChange={e => this.props.onInput(e)}
         />
       </div>
     );
