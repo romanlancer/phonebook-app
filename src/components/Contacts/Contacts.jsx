@@ -10,7 +10,11 @@ const Contacts = ({ contacts, filter, filteredContacts, deleteContact }) => {
           <span className={styles.contactName}>{name}: </span>
           <span className={styles.phoneNumber}>{number}</span>
 
-          <button className={styles.buttons} onClick={e => deleteContact(e)}>
+          <button
+            className={styles.buttons}
+            onClick={e => deleteContact(e)}
+            aria-label="delete contact button"
+          >
             <TiUserDeleteOutline size={20} />
           </button>
         </li>
