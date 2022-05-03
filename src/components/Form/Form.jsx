@@ -36,7 +36,6 @@ class Form extends Component {
     const { name, value } = e.currentTarget;
 
     this.setState({ isDisabled: false, [name]: value });
-    console.log(this.props.contacts);
 
     const contactFinder = this.props.contacts.find(
       contact =>
