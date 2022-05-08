@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 import { TiUserDeleteOutline } from 'react-icons/ti';
 const Contacts = ({ contacts, filter, filteredContacts, deleteContact }) => {
+  console.log(filter);
   let rendered = filter === '' ? contacts : filteredContacts();
   return (
     <ul className={styles.contactsList}>
@@ -11,6 +12,7 @@ const Contacts = ({ contacts, filter, filteredContacts, deleteContact }) => {
           <span className={styles.phoneNumber}>{number}</span>
 
           <button
+            type="button"
             className={styles.buttons}
             onClick={e => deleteContact(e)}
             aria-label="delete contact button"
