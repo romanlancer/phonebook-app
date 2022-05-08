@@ -24,16 +24,16 @@ const Contacts = ({ contacts, filter, filteredContacts, deleteContact }) => {
 };
 
 Contacts.propTypes = {
-  filter: PropTypes.string,
+  filter: PropTypes.string.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
     })
-  ),
-  filteredContacts: PropTypes.func,
-  deleteContact: PropTypes.func,
+  ).isRequired,
+  filteredContacts: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func.isRequired,
 };
 
 export default Contacts;

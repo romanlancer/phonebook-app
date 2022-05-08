@@ -14,7 +14,7 @@ class Filter extends Component {
 }
 
 Filter.propTypes = {
-  onInput: PropTypes.func,
+  onInput: PropTypes.func.isRequired,
 };
 
 export default Filter;

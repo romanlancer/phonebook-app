@@ -94,14 +94,14 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  addContact: PropTypes.func,
+  addContact: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
       id: PropTypes.string.isRequired,
     })
-  ),
+  ).isRequired,
 };
 
 export default Form;
