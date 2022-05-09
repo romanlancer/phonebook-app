@@ -34,7 +34,6 @@ const App = () => {
       <h1>
         Phonebook <BsJournalBookmark size={35} className={styles.icon} />
       </h1>
-
       <Form addContact={addContact} contacts={contacts} />
       <h2>Contacts</h2>
       <Filter onFilterInput={onFilterInput} />
@@ -44,6 +43,9 @@ const App = () => {
         filteredContacts={filteredContacts}
         deleteContact={deleteContact}
       />
+      {contacts.length === 0 && (
+        <p style={{ textDecoration: 'underline' }}>no contacts available</p>
+      )}
     </div>
   );
 };
