@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import useLocalStorage from 'Hooks/useLocalStorage';
 import styles from './styles.module.css';
 import { BsJournalBookmark } from 'react-icons/bs';
 import Form from '../Form';
@@ -6,21 +7,8 @@ import Contacts from '../Contacts';
 import Filter from '../Filter';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  useEffect(() => {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-
-    if (parsedContacts) {
-      setContacts(parsedContacts);
-    }
-  }, []);
 
   const addContact = contact => {
     setContacts([...contacts, contact]);
@@ -59,4 +47,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;

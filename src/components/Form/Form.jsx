@@ -5,7 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import styles from './styles.module.css';
 import PropTypes from 'prop-types';
 
-export default function Form({ contacts, addContact }) {
+const Form = ({ contacts, addContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
@@ -81,7 +81,7 @@ export default function Form({ contacts, addContact }) {
       </button>
     </form>
   );
-}
+};
 
 Form.propTypes = {
   addContact: PropTypes.func.isRequired,
@@ -93,3 +93,5 @@ Form.propTypes = {
     })
   ).isRequired,
 };
+
+export default Form;

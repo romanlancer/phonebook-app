@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
-export default function Filter({ onFilterInput }) {
+const Filter = ({ onFilterInput }) => {
   const [filter, setFilter] = useState('');
   useEffect(() => {
     onFilterInput(filter);
@@ -13,8 +13,10 @@ export default function Filter({ onFilterInput }) {
       <input name="filter" onChange={e => setFilter(e.target.value)} />
     </div>
   );
-}
+};
 
 Filter.propTypes = {
   onFilterInput: PropTypes.func.isRequired,
 };
+
+export default Filter;
