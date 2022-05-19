@@ -3,12 +3,15 @@ import shortid from 'shortid';
 import { TiUserAddOutline } from 'react-icons/ti';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import styles from './styles.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getItems, addContacts } from 'Redux/contactsSlice';
 
-const Form = ({ contacts, addContact }) => {
+const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const dispatch = useDispatch();
+  const contacts = useSelector(getItems);
 
   const reset = () => {
     setName('');
@@ -22,7 +25,7 @@ const Form = ({ contacts, addContact }) => {
       name,
       number,
     };
-    addContact(contact);
+    dispatch(addContacts(contact));
     reset();
   };
 
@@ -81,17 +84,6 @@ const Form = ({ contacts, addContact }) => {
       </button>
     </form>
   );
-};
-
-Form.propTypes = {
-  addContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };
 
 export default Form;
