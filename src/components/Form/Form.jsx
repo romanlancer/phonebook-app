@@ -32,15 +32,12 @@ const Form = () => {
   useEffect(() => {
     setIsDisabled(false);
     const contactFinder = contacts.find(
-      contact =>
-        contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.number === number
+      contact => contact.name === name || contact.number === number
     );
 
     if (contactFinder) {
       setIsDisabled(true);
       Notify.warning(`${name} ${number} is already in contacts.`);
-      reset();
     }
   }, [name, number, contacts]);
 

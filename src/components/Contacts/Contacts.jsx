@@ -25,9 +25,7 @@ const Contacts = () => {
             <button
               type="button"
               className={styles.buttons}
-              onClick={e =>
-                dispatch(deleteContact(e.currentTarget.parentNode.id))
-              }
+              onClick={() => dispatch(deleteContact(id))}
               aria-label="delete contact button"
             >
               <TiUserDeleteOutline size={20} />
