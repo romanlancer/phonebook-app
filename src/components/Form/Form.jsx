@@ -1,45 +1,52 @@
 import { useState, useEffect } from 'react';
-import shortid from 'shortid';
+
 import { TiUserAddOutline } from 'react-icons/ti';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import styles from './styles.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getItems, addContacts } from 'Redux/contactsSlice';
+import {
+  useCreateContactMutation,
+  useGetContactsQuery,
+} from 'Redux/contactsApi';
 
 const Form = () => {
+  const [createContact] = useCreateContactMutation();
+  const { data } = useGetContactsQuery();
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [isDisabled, setIsDisabled] = useState(false);
-  const dispatch = useDispatch();
-  const contacts = useSelector(getItems);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const reset = () => {
     setName('');
     setNumber('');
   };
 
+  useEffect(() => {
+    name.length > 0 && number.length > 0
+      ? setIsDisabled(false)
+      : setIsDisabled(true);
+  }, [name, number]);
+
   const handleSubmit = e => {
     e.preventDefault();
     const contact = {
-      id: shortid.generate(),
       name,
       number,
     };
-    dispatch(addContacts(contact));
-    reset();
-  };
 
-  useEffect(() => {
-    setIsDisabled(false);
-    const contactFinder = contacts.find(
+    const contactFinder = data.find(
       contact => contact.name === name || contact.number === number
     );
 
     if (contactFinder) {
-      setIsDisabled(true);
       Notify.warning(`${name} ${number} is already in contacts.`);
+      return;
     }
-  }, [name, number, contacts]);
+
+    createContact(contact);
+
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>

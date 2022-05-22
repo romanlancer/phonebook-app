@@ -1,18 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, PERSIST } from 'redux-persist';
-import { persistedContactsReducer } from './contactsSlice';
-
+import { contactsSlice } from './contactsSlice';
+import { contactsApi } from './contactsApi';
 export const store = configureStore({
   reducer: {
-    contacts: persistedContactsReducer,
+    contacts: contactsSlice.reducer,
+    [contactsApi.reducerPath]: contactsApi.reducer,
   },
-  middleware(getDefaultMiddleware) {
-    return getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [PERSIST],
-      },
-    });
-  },
-});
 
-export const persistor = persistStore(store);
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(contactsApi.middleware),
+});
