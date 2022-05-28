@@ -1,4 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from 'Redux/auth/auth-operations';
 import styles from './styles.module.css';
 import {
   faCheck,
@@ -6,17 +8,15 @@ import {
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'api/axios';
-console.log(axios);
+
 const USER_REGEX = /^[A-z][A-z0-9-_-\s?]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-const REGISTER_URL = '/users/signup';
 
 const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
-
+  const dispatch = useDispatch();
   const [user, setUser] = useState('');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -67,18 +67,9 @@ const Register = () => {
       setErrMsg('Invalid Entry');
       return;
     }
+
     try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ name: user, password: pwd, email }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
-      );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
+      dispatch(authOperations.register({ name: user, password: pwd, email }));
       setSuccess(true);
       //clear state and controlled inputs
       //need value attrib on inputs for this
