@@ -6,7 +6,7 @@ import { SpinnerInfinity } from 'spinners-react';
 import {
   useGetContactsQuery,
   useDeleteContactMutation,
-} from 'Redux/contactsApi';
+} from 'Redux/contacts/contactsApi';
 
 const Contacts = () => {
   const { data, isFetching } = useGetContactsQuery();

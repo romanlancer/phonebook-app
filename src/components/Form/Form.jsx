@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 import {
   useCreateContactMutation,
   useGetContactsQuery,
-} from 'Redux/contactsApi';
+} from 'Redux/contacts/contactsApi';
 
 const Form = () => {
   const [createContact] = useCreateContactMutation();

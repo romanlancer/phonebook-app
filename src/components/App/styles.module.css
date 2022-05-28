@@ -1,28 +1,8 @@
-.wrapper {
+.App {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-.wrapper h1 {
-  display: flex;
-  margin: 10px 0;
-
-  align-items: center;
-}
-
-.wrapper h2 {
-  display: flex;
-  margin: 5px 0;
-
-  align-items: center;
-}
-
-.icon {
-  margin-left: 10px;
-}
-
-input {
-  display: block;
-  width: 200px;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
 }
