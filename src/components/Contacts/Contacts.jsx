@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import { TiUserDeleteOutline } from 'react-icons/ti';
 import { useSelector } from 'react-redux';
-import { getFilter } from 'Redux/contactsSlice';
+import { getFilter } from 'Redux/contacts/contactsSlice';
 import { SpinnerInfinity } from 'spinners-react';
 import {
   useGetContactsQuery,

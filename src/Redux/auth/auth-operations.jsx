@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
@@ -17,15 +17,20 @@ const token = {
  * body: { name, email, password }
  * После успешной регистрации добавляем токен в HTTP-заголовок
  */
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      if (error?.response?.data?.name === 'MongoError') {
+        Notify.failure('User already exists!');
+      }
+    }
   }
-});
+);
 
 /*
  * POST @ /users/login

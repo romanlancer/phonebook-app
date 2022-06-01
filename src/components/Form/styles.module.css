@@ -1,4 +1,4 @@
-label {
+.form label {
   display: block;
   font-size: 20px;
   display: flex;
@@ -6,7 +6,7 @@ label {
   align-items: center;
 }
 
-input {
+.form input {
   display: block;
   margin-top: 18px;
   border-radius: 5px;
@@ -16,7 +16,7 @@ input {
   padding-left: 10px;
 }
 
-input::placeholder {
+.form input::placeholder {
   opacity: 0.8;
 }
 

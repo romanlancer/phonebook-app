@@ -1,8 +1,8 @@
 import styles from './styles.module.css';
 import { BsJournalBookmark } from 'react-icons/bs';
-import Form from '../../components/Form';
-import Contacts from '../../components/Contacts';
-import Filter from '../../components/Filter';
+import Form from 'components/Form';
+import Contacts from 'components/Contacts';
+import Filter from 'components/Filter';
 
 const contactsPage = () => {
   return (

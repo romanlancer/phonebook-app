@@ -15,7 +15,7 @@
 .section {
   width: 100%;
   max-width: 420px;
-  min-height: 400px;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,7 +27,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+
   flex-grow: 1;
   padding-bottom: 1rem;
 }
@@ -46,14 +46,14 @@ textarea {
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
-  border: 1px solid black;
+  width: 100%;
   transform: scale(1);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form > label,
-button {
+.form > button {
   margin-top: 0.5rem;
 }
 
