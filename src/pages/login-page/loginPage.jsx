@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import authOperations from 'Redux/auth/auth-operations';
 const Login = () => {
   const userRef = useRef();
@@ -48,7 +49,7 @@ const Login = () => {
         >
           {errMsg}
         </p>
-        <h2>Sign In</h2>
+        <h1>Sign In</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label htmlFor="email">Email:</label>
           <input
@@ -74,10 +75,9 @@ const Login = () => {
         <p>
           Need an Account?
           <br />
-          <span className={styles.line}>
-            {/*put router link here*/}
-            <a href="#">Sign Up</a>
-          </span>
+          <NavLink className={styles.line} to={'/SignUp'}>
+            Sign Up
+          </NavLink>
         </p>
       </section>
     </div>

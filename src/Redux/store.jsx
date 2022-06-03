@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { contactsSlice } from './contacts/contactsSlice';
 import { contactsApi } from './contacts/contactsApi';
 import storage from 'redux-persist/lib/storage';
@@ -17,7 +17,7 @@ import {
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'isLoggedIn'],
 };
 
 export const store = configureStore({

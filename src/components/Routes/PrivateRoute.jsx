@@ -6,7 +6,6 @@ import authSelectors from 'Redux/auth/auth-selectors';
 const PrivateRoute = ({ component }) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  console.log(isLoggedIn);
   return isLoggedIn ? component : <Navigate to="/LogIn" />;
 };
 

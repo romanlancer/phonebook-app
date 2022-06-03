@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'Redux/auth/auth-operations';
 import styles from './styles.module.css';
+import { NavLink } from 'react-router-dom';
 
 import {
   faCheck,
@@ -85,7 +86,7 @@ const Register = () => {
         >
           {errMsg}
         </p>
-        <h2>Register</h2>
+        <h1>Register</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label htmlFor="username">
             Username:
@@ -266,10 +267,9 @@ const Register = () => {
         <p>
           Already registered?
           <br />
-          <span className={styles.line}>
-            {/*put router link here*/}
-            <a href="#">Sign In</a>
-          </span>
+          <NavLink className={styles.line} to={'/LogIn'}>
+            Sign In
+          </NavLink>
         </p>
       </section>
     </div>

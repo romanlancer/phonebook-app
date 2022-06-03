@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+.wrapper > input {
+  border: 1px solid black;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
+}
+
 .text {
   font-size: 16px;
   line-height: 1;

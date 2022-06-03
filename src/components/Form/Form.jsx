@@ -50,9 +50,10 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <label>
+      <label className={styles.label}>
         Name:
         <input
+          className={styles.input}
           type="text"
           name="name"
           placeholder="john doe"
@@ -63,12 +64,12 @@ const Form = () => {
           required
         />
       </label>
-      <label>
+      <label className={styles.label}>
         Number:
         <input
+          className={styles.input}
           type="tel"
           placeholder="+380 33 333 3333"
-          className={styles.phoneInputCountry}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           value={number}

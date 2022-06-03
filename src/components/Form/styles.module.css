@@ -1,4 +1,4 @@
-.form label {
+.label {
   display: block;
   font-size: 20px;
   display: flex;
@@ -6,14 +6,14 @@
   align-items: center;
 }
 
-.form input {
+.input {
   display: block;
   margin-top: 18px;
-  border-radius: 5px;
-  border: 1px solid black;
   margin-bottom: 20px;
-  font-size: 16px;
-  padding-left: 10px;
+  border: 1px solid black;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .form input::placeholder {
@@ -50,9 +50,4 @@
 
 .icon {
   margin-left: 10px;
-}
-
-.phoneInputCountry input {
-  margin-top: 18px;
-  align-items: center;
 }

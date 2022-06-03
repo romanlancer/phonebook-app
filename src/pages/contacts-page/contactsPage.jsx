@@ -4,18 +4,22 @@ import Form from 'components/Form';
 import Contacts from 'components/Contacts';
 import Filter from 'components/Filter';
 
-const contactsPage = () => {
+const ContactsPage = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>
-        Phonebook <BsJournalBookmark size={35} className={styles.icon} />
-      </h1>
-      <Form />
-      <h2>Contacts</h2>
-      <Filter />
-      <Contacts />
+      <section>
+        <h1>
+          Phonebook <BsJournalBookmark size={35} className={styles.icon} />
+        </h1>
+        <Form />
+      </section>
+      <section>
+        <h2>Contacts</h2>
+        <Filter />
+        <Contacts />
+      </section>
     </div>
   );
 };
 
-export default contactsPage;
+export default ContactsPage;

@@ -43,9 +43,7 @@ const Contacts = () => {
       {data && data.length === 0 && (
         <p style={{ textDecoration: 'underline' }}>no contacts available</p>
       )}
-      {isFetching && (
-        <SpinnerInfinity style={{ marginTop: '20px', color: 'white' }} />
-      )}
+      {isFetching && <SpinnerInfinity style={{ color: 'white' }} />}
     </>
   );
 };
