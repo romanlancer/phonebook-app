@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <header>
       <Navbar
-        style={{ padding: '0.3rem' }}
+        style={{ paddingTop: '0.3rem', paddingBottom: '0.3rem' }}
         fixed="top"
         bg="dark"
         variant="dark"

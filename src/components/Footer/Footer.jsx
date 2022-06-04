@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer>
       <Navbar
-        style={{ padding: '0.3rem' }}
+        style={{ padding: '0rem' }}
         fixed="bottom"
         bg="dark"
         variant="dark"
