@@ -4,7 +4,12 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 const Footer = () => {
   return (
     <footer>
-      <Navbar fixed="bottom" bg="dark" variant="dark">
+      <Navbar
+        style={{ padding: '0.3rem' }}
+        fixed="bottom"
+        bg="dark"
+        variant="dark"
+      >
         <Container>
           <Navbar.Brand className="ms-3">
             <BsJournalBookmark size={35} />
