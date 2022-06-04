@@ -86,11 +86,13 @@ a:visited {
 .valid {
   color: limegreen;
   margin-left: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .invalid {
   color: red;
   margin-left: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .errmsg {

@@ -3,13 +3,7 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'Redux/auth/auth-operations';
 import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
-
-import {
-  faCheck,
-  faTimes,
-  faInfoCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaCheck, FaTimes, FaInfoCircle } from 'react-icons/fa';
 
 const USER_REGEX = /^[A-z][A-z0-9-_-\s?]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -90,12 +84,10 @@ const Register = () => {
         <form onSubmit={handleSubmit} className={styles.form}>
           <label htmlFor="username">
             Username:
-            <FontAwesomeIcon
-              icon={faCheck}
+            <FaCheck
               className={validName ? `${styles.valid}` : `${styles.hide}`}
             />
-            <FontAwesomeIcon
-              icon={faTimes}
+            <FaTimes
               className={
                 validName || !user ? `${styles.hide}` : `${styles.invalid}`
               }
@@ -122,7 +114,7 @@ const Register = () => {
                 : `${styles.offscreen}`
             }
           >
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FaInfoCircle />
             4 to 24 characters.
             <br />
             Must begin with a letter.
@@ -132,12 +124,10 @@ const Register = () => {
 
           <label htmlFor="email">
             Email:
-            <FontAwesomeIcon
-              icon={faCheck}
+            <FaCheck
               className={validEmail ? `${styles.valid}` : `${styles.hide}`}
             />
-            <FontAwesomeIcon
-              icon={faTimes}
+            <FaTimes
               className={
                 validEmail || !email ? `${styles.hide}` : `${styles.invalid}`
               }
@@ -164,7 +154,7 @@ const Register = () => {
                 : `${styles.offscreen}`
             }
           >
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FaInfoCircle />
             An email is a string separated into two parts by @ symbol. a
             "personal_info" and a domain, that is personal_info@domain Letters,
             numbers, underscores, hyphens allowed.
@@ -175,12 +165,10 @@ const Register = () => {
 
           <label htmlFor="password">
             Password:
-            <FontAwesomeIcon
-              icon={faCheck}
+            <FaCheck
               className={validPwd ? `${styles.valid}` : `${styles.hide}`}
             />
-            <FontAwesomeIcon
-              icon={faTimes}
+            <FaTimes
               className={
                 validPwd || !pwd ? `${styles.hide}` : `${styles.invalid}`
               }
@@ -205,7 +193,7 @@ const Register = () => {
                 : `${styles.offscreen}`
             }
           >
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FaInfoCircle />
             8 to 24 characters.
             <br />
             Must include uppercase and lowercase letters, a number and a special
@@ -221,14 +209,12 @@ const Register = () => {
 
           <label htmlFor="confirm_pwd">
             Confirm Password:
-            <FontAwesomeIcon
-              icon={faCheck}
+            <FaCheck
               className={
                 validMatch && matchPwd ? `${styles.valid}` : `${styles.hide}`
               }
             />
-            <FontAwesomeIcon
-              icon={faTimes}
+            <FaTimes
               className={
                 validMatch || !matchPwd ? `${styles.hide}` : `${styles.invalid}`
               }
@@ -253,7 +239,7 @@ const Register = () => {
                 : `${styles.offscreen}`
             }
           >
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FaInfoCircle />
             Must match the first password input field.
           </p>
 

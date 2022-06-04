@@ -1,5 +1,6 @@
 import styles from './styles.module.css';
 import { TiUserDeleteOutline } from 'react-icons/ti';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getFilter } from 'Redux/contacts/contactsSlice';
 import { SpinnerInfinity } from 'spinners-react';
@@ -29,14 +30,21 @@ const Contacts = () => {
             <li className={styles.listItem} key={id} id={id}>
               <span className={styles.contactName}>{name}: </span>
               <span className={styles.phoneNumber}>{number}</span>
-              <button
-                type="button"
-                className={styles.buttons}
-                onClick={() => deleteContact(id)}
-                aria-label="delete contact button"
+              <OverlayTrigger
+                placement="bottom"
+                overlay={
+                  <Tooltip id="button-tooltip-2">Click to delete</Tooltip>
+                }
               >
-                <TiUserDeleteOutline size={20} />
-              </button>
+                <button
+                  type="button"
+                  className={styles.buttons}
+                  onClick={() => deleteContact(id)}
+                  aria-label="delete contact button"
+                >
+                  <TiUserDeleteOutline size={20} />
+                </button>
+              </OverlayTrigger>
             </li>
           ))}
       </ul>

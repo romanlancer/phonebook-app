@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { TiUserAddOutline } from 'react-icons/ti';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { toast } from 'react-toastify';
 import styles from './styles.module.css';
 import {
   useCreateContactMutation,
@@ -39,7 +39,9 @@ const Form = () => {
     );
 
     if (contactFinder) {
-      Notify.warning(`${name} ${number} is already in contacts.`);
+      toast.warn(`${name} ${number} is already in contacts.`, {
+        theme: 'dark',
+      });
       return;
     }
 

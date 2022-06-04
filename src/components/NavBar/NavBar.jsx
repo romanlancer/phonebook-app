@@ -1,4 +1,3 @@
-import MainContainer from 'components/Container';
 import Logout from 'components/Logout';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
@@ -9,8 +8,13 @@ const NavBar = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    <MainContainer>
-      <Navbar bg="dark" variant="dark">
+    <header>
+      <Navbar
+        style={{ padding: '0.3rem' }}
+        fixed="top"
+        bg="dark"
+        variant="dark"
+      >
         <Container>
           <Navbar.Brand>Contacts</Navbar.Brand>
 
@@ -28,7 +32,7 @@ const NavBar = () => {
           )}
         </Container>
       </Navbar>
-    </MainContainer>
+    </header>
   );
 };
 

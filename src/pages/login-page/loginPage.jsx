@@ -22,21 +22,9 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(authOperations.logIn({ email, password: pwd }));
-    //console.log(JSON.stringify(response));
 
     setEmail('');
     setPwd('');
-
-    //   if (!err?.response) {
-    //     setErrMsg('No Server Response');
-    //   } else if (err.response?.status === 400) {
-    //     setErrMsg('Missing Username or Password');
-    //   } else if (err.response?.status === 401) {
-    //     setErrMsg('Unauthorized');
-    //   } else {
-    //     setErrMsg('Login Failed');
-    //   }
-    //   errRef.current.focus();
   };
 
   return (
