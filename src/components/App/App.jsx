@@ -48,12 +48,9 @@ const App = () => {
     if (progress >= 100) {
       clearInterval(progressInterval);
     }
-    return () => {
-      setProgress(0);
-    };
   }, [progress]);
 
-  isFetchingCurrentUser && <LoadingScreen />;
+  if (isFetchingCurrentUser) return <LoadingScreen />;
 
   return (
     <>
