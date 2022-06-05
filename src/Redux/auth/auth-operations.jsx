@@ -6,6 +6,7 @@ import { MdError } from 'react-icons/md';
 import Player from 'components/Player';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import { Navigate } from 'react-router-dom';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -102,8 +103,8 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      error &&
-        toast.error('Sorry, an error occurred', {
+      if (error.response?.status === 401) {
+        toast.error('Sorry, your authorization token expired, please relogin', {
           icon: () => (
             <>
               <MdError size={24} color="var(--toastify-color-error)" />
@@ -111,6 +112,8 @@ const fetchCurrentUser = createAsyncThunk(
             </>
           ),
         });
+        <Navigate to="/" />;
+      }
     }
   }
 );
