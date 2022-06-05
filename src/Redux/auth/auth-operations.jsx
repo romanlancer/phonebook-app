@@ -1,7 +1,12 @@
 import axios from 'axios';
-import Toasty from 'toasty.webp';
+import errorSound from 'assets/error-sound.mp3';
+import toastyMK from 'assets/Mortal_Kombat_4_Toasty_Sound_Effect.mp3';
+import Toasty from 'assets/toasty.webp';
+import { MdError } from 'react-icons/md';
+import Player from 'components/Player';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
@@ -19,10 +24,15 @@ const register = createAsyncThunk('auth/register', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    error && toast.error('Sorry, an error occurred');
-
     error?.response?.data?.name === 'MongoError' &&
-      toast.error('User already exists!');
+      toast.error('User already exists!', {
+        icon: () => (
+          <>
+            <MdError size={24} color="var(--toastify-color-error)" />
+            <Player url={errorSound} />
+          </>
+        ),
+      });
   }
 });
 
@@ -33,7 +43,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
       toast.success('', {
         icon: () => (
           <>
-            {' '}
+            <Player url={toastyMK} />
             <img
               width={100}
               height={100}
@@ -49,7 +59,14 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     return data;
   } catch (error) {
     error.response?.status === 400 &&
-      toast.error('Incorrect email or password');
+      toast.error('Incorrect email or password', {
+        icon: () => (
+          <>
+            <MdError size={24} color="var(--toastify-color-error)" />
+            <Player url={errorSound} />
+          </>
+        ),
+      });
   }
 });
 
@@ -58,7 +75,15 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    error && toast.error('Sorry, an error occurred');
+    error &&
+      toast.error('Sorry, an error occurred', {
+        icon: () => (
+          <>
+            <MdError size={24} color="var(--toastify-color-error)" />
+            <Player url={errorSound} />
+          </>
+        ),
+      });
   }
 });
 
@@ -77,7 +102,15 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      error && toast.error('Sorry, an error occurred');
+      error &&
+        toast.error('Sorry, an error occurred', {
+          icon: () => (
+            <>
+              <MdError size={24} color="var(--toastify-color-error)" />
+              <Player url={errorSound} />
+            </>
+          ),
+        });
     }
   }
 );

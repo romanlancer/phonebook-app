@@ -39,9 +39,7 @@ const Form = () => {
     );
 
     if (contactFinder) {
-      toast.warn(`${name} ${number} is already in contacts.`, {
-        theme: 'dark',
-      });
+      toast.warn(`${name} ${number} is already in contacts.`);
       return;
     }
 

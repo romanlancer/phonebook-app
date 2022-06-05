@@ -19,7 +19,7 @@ button {
 body {
   padding-top: 60px;
   padding-bottom: 50px;
-  background-image: url(./depositphotos_8138615-stock-photo-old-style-phone-over-yellow.jpg);
+  background-image: url(./assets/depositphotos_8138615-stock-photo-old-style-phone-over-yellow.jpg);
   background-repeat: no-repeat;
   background-size: 30%;
   background-position: 14% 30%;
@@ -29,6 +29,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--bs-gray-dark);
+  border-radius: 10px;
 }
 
 code {
