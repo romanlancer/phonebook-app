@@ -4,13 +4,16 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getFilter } from 'Redux/contacts/contactsSlice';
 import { SpinnerInfinity } from 'spinners-react';
+
 import {
   useGetContactsQuery,
   useDeleteContactMutation,
 } from 'Redux/contacts/contactsApi';
+import { useEffect } from 'react';
 
 const Contacts = () => {
-  const { data, isFetching } = useGetContactsQuery();
+  const { data, isFetching, refetch } = useGetContactsQuery();
+
   const [deleteContact] = useDeleteContactMutation();
 
   const filter = useSelector(getFilter);
@@ -20,7 +23,12 @@ const Contacts = () => {
       contact.name.toLowerCase().includes(filter.toLowerCase().trim())
     );
   };
+
   let rendered = filter === '' ? data : filteredContacts();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <>

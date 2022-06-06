@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import authSelectors from 'Redux/auth/auth-selectors';
 
 const PublicRoute = ({ component }) => {
-  const auth = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-  return auth ? <Navigate to="/" /> : component;
+  return isLoggedIn ? <Navigate to="/" /> : component;
 };
 
 PublicRoute.propTypes = {

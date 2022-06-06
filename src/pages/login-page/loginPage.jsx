@@ -22,7 +22,6 @@ const Login = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(authOperations.logIn({ email, password: pwd }));
-
     setEmail('');
     setPwd('');
   };
