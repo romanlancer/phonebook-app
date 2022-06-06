@@ -3,7 +3,15 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'Redux/auth/auth-operations';
 import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
-import { FaCheck, FaTimes, FaInfoCircle } from 'react-icons/fa';
+import {
+  FaCheck,
+  FaTimes,
+  FaInfoCircle,
+  FaRegEye,
+  FaRegUser,
+} from 'react-icons/fa';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const USER_REGEX = /^[A-z][A-z0-9-_-\s?]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -13,6 +21,8 @@ const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
   const dispatch = useDispatch();
+  const [passwordShown1, setPasswordShown1] = useState(false);
+  const [passwordShown2, setPasswordShown2] = useState(false);
   const [user, setUser] = useState('');
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -70,6 +80,14 @@ const Register = () => {
     setMatchPwd('');
   };
 
+  const togglePassword1 = () => {
+    setPasswordShown1(!passwordShown1);
+  };
+
+  const togglePassword2 = () => {
+    setPasswordShown2(!passwordShown2);
+  };
+
   return (
     <div className={styles.wrapper}>
       <section className={styles.section}>
@@ -93,19 +111,27 @@ const Register = () => {
               }
             />
           </label>
-          <input
-            type="text"
-            id="username"
-            ref={userRef}
-            autoComplete="off"
-            onChange={e => setUser(e.target.value)}
-            value={user}
-            required
-            aria-invalid={validName ? 'false' : 'true'}
-            aria-describedby="uidnote"
-            onFocus={() => setUserFocus(true)}
-            onBlur={() => setUserFocus(false)}
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              type="text"
+              id="username"
+              ref={userRef}
+              autoComplete="off"
+              onChange={e => setUser(e.target.value)}
+              value={user}
+              required
+              aria-invalid={validName ? 'false' : 'true'}
+              aria-describedby="uidnote"
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+            />
+            <div className={styles.infoIcon}>
+              <FaRegUser
+                size={28}
+                style={{ top: '7px', left: '7px', position: 'absolute' }}
+              />
+            </div>
+          </div>
           <p
             id="uidnote"
             className={
@@ -133,19 +159,27 @@ const Register = () => {
               }
             />
           </label>
+          <div className={styles.inputWrapper}>
+            <input
+              type="email"
+              id="email"
+              ref={userRef}
+              onChange={e => setEmail(e.target.value)}
+              value={email}
+              required
+              aria-invalid={validEmail ? 'false' : 'true'}
+              aria-describedby="emailnote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+            />
+            <div className={styles.infoIcon}>
+              <MdOutlineAlternateEmail
+                size={30}
+                style={{ top: '5px', left: '5px', position: 'absolute' }}
+              />
+            </div>
+          </div>
 
-          <input
-            type="email"
-            id="email"
-            ref={userRef}
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-            required
-            aria-invalid={validEmail ? 'false' : 'true'}
-            aria-describedby="emailnote"
-            onFocus={() => setEmailFocus(true)}
-            onBlur={() => setEmailFocus(false)}
-          />
           <p
             id="emailnote"
             className={
@@ -174,17 +208,34 @@ const Register = () => {
               }
             />
           </label>
-          <input
-            type="password"
-            id="password"
-            onChange={e => setPwd(e.target.value)}
-            value={pwd}
-            required
-            aria-invalid={validPwd ? 'false' : 'true'}
-            aria-describedby="pwdnote"
-            onFocus={() => setPwdFocus(true)}
-            onBlur={() => setPwdFocus(false)}
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              type={passwordShown2 ? 'text' : 'password'}
+              id="password"
+              onChange={e => setPwd(e.target.value)}
+              value={pwd}
+              required
+              aria-invalid={validPwd ? 'false' : 'true'}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip id="password button tooltip">show password</Tooltip>
+              }
+            >
+              <button
+                className={styles.showPasswordButton}
+                onClick={togglePassword2}
+                type="button"
+              >
+                <FaRegEye size={30} />
+              </button>
+            </OverlayTrigger>
+          </div>
+
           <p
             id="pwdnote"
             className={
@@ -220,17 +271,34 @@ const Register = () => {
               }
             />
           </label>
-          <input
-            type="password"
-            id="confirm_pwd"
-            onChange={e => setMatchPwd(e.target.value)}
-            value={matchPwd}
-            required
-            aria-invalid={validMatch ? 'false' : 'true'}
-            aria-describedby="confirmnote"
-            onFocus={() => setMatchFocus(true)}
-            onBlur={() => setMatchFocus(false)}
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              type={passwordShown1 ? 'text' : 'password'}
+              id="confirm_pwd"
+              onChange={e => setMatchPwd(e.target.value)}
+              value={matchPwd}
+              required
+              aria-invalid={validMatch ? 'false' : 'true'}
+              aria-describedby="confirmnote"
+              onFocus={() => setMatchFocus(true)}
+              onBlur={() => setMatchFocus(false)}
+            />
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip id="password button tooltip">show password</Tooltip>
+              }
+            >
+              <button
+                className={styles.showPasswordButton}
+                onClick={togglePassword1}
+                type="button"
+              >
+                <FaRegEye size={30} />
+              </button>
+            </OverlayTrigger>
+          </div>
+
           <p
             id="confirmnote"
             className={
@@ -244,6 +312,7 @@ const Register = () => {
           </p>
 
           <button
+            type="submit"
             className={styles.submitButton}
             disabled={!validName || !validPwd || !validMatch ? true : false}
           >

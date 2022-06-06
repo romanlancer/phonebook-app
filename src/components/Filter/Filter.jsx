@@ -11,7 +11,9 @@ const Filter = () => {
       <OverlayTrigger
         placement="bottom"
         overlay={
-          <Tooltip id="button-tooltip-2">Type here to find a contact</Tooltip>
+          <Tooltip id="filter input tooltip">
+            Type here to find a contact
+          </Tooltip>
         }
       >
         <input

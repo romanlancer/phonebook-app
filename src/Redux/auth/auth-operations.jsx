@@ -22,6 +22,22 @@ const token = {
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
+    data.user &&
+      toast.success('', {
+        icon: () => (
+          <>
+            <Player url={toastyMK} />
+            <img
+              width={100}
+              height={100}
+              src={Toasty}
+              alt="toasty"
+              className="me-4"
+            />
+            <p>Welcome !!! You are successfully logged in</p>
+          </>
+        ),
+      });
     token.set(data.token);
     return data;
   } catch (error) {
@@ -40,7 +56,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
-    console.log(data);
+
     data.user &&
       toast.success('', {
         icon: () => (
@@ -102,7 +118,7 @@ const fetchCurrentUser = createAsyncThunk(
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
-      console.log(data);
+
       return data;
     } catch (error) {
       if (error.response?.status === 401) {

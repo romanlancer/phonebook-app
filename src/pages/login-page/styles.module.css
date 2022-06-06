@@ -6,12 +6,6 @@
   min-height: 80vh;
 }
 
-.submitButton:hover,
-.submitButton:focus {
-  transform: scale(1.05);
-  background-color: rgba(224, 219, 215, 0.459);
-}
-
 .section {
   width: 100%;
   max-width: 420px;
@@ -37,8 +31,8 @@ a:visited {
   color: #fff;
 }
 
-.form > input,
-.form > button,
+.form > .inputWrapper > input,
+.form > .submitButton,
 .form > textarea {
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
@@ -51,12 +45,22 @@ a:visited {
     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.submitButton:hover,
+.submitButton:focus {
+  transform: scale(1.05);
+  background-color: rgba(224, 219, 215, 0.459);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
 .form > label,
-.form > button {
+.form > .submitButton {
   margin-top: 0.5rem;
 }
 
-.form > button {
+.form > .submitButton {
   padding: 0.5rem;
 }
 
@@ -111,4 +115,34 @@ a:visited {
 .line:focus {
   transform: scale(1.05);
   color: blue;
+}
+
+.showPasswordButton {
+  position: absolute;
+  border: transparent;
+  border-left: 2px solid rgba(0, 0, 0, 0.4);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: transparent;
+  width: 44px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.showPasswordButton:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.infoIcon {
+  composes: showPasswordButton;
+  width: 44px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+}
+
+.infoIcon:hover {
+  background-color: transparent;
 }

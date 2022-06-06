@@ -3,6 +3,10 @@ import styles from './styles.module.css';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import authOperations from 'Redux/auth/auth-operations';
+import { FaRegEye } from 'react-icons/fa';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
 const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
@@ -10,6 +14,11 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
   useEffect(() => {
     userRef.current.focus();
@@ -39,24 +48,49 @@ const Login = () => {
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <label htmlFor="email">Email:</label>
-          <input
-            autoComplete="off"
-            type="email"
-            id="email"
-            ref={userRef}
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-            required
-          />
+          <div className={styles.inputWrapper}>
+            {' '}
+            <input
+              autoComplete="off"
+              type="email"
+              id="email"
+              ref={userRef}
+              onChange={e => setEmail(e.target.value)}
+              value={email}
+              required
+            />
+            <div className={styles.infoIcon}>
+              <MdOutlineAlternateEmail
+                size={30}
+                style={{ top: '5px', left: '5px', position: 'absolute' }}
+              />
+            </div>
+          </div>
 
           <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            onChange={e => setPwd(e.target.value)}
-            value={pwd}
-            required
-          />
+          <div className={styles.inputWrapper}>
+            <input
+              type={passwordShown ? 'text' : 'password'}
+              id="password"
+              onChange={e => setPwd(e.target.value)}
+              value={pwd}
+              required
+            />
+            <OverlayTrigger
+              placement="top"
+              overlay={
+                <Tooltip id="password button tooltip">show password</Tooltip>
+              }
+            >
+              <button
+                className={styles.showPasswordButton}
+                onClick={togglePassword}
+                type="button"
+              >
+                <FaRegEye size={30} />
+              </button>
+            </OverlayTrigger>
+          </div>
           <button className={styles.submitButton}>Sign In</button>
         </form>
         <p>
