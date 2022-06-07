@@ -4,6 +4,7 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { getFilter } from 'Redux/contacts/contactsSlice';
 import { SpinnerInfinity } from 'spinners-react';
+import deleteSound from 'assets/delete-sound.mp3';
 
 import {
   useGetContactsQuery,
@@ -12,6 +13,7 @@ import {
 import { useEffect } from 'react';
 
 const Contacts = () => {
+  const audio = new Audio(deleteSound);
   const { data, isFetching, refetch } = useGetContactsQuery();
 
   const [deleteContact] = useDeleteContactMutation();
@@ -24,11 +26,14 @@ const Contacts = () => {
     );
   };
 
-  let rendered = filter === '' ? data : filteredContacts();
-
   useEffect(() => {
     refetch();
   }, [refetch]);
+  let rendered = filter === '' ? data : filteredContacts();
+
+  const startPlaying = () => {
+    audio.play();
+  };
 
   return (
     <>
@@ -47,7 +52,10 @@ const Contacts = () => {
                 <button
                   type="button"
                   className={styles.buttons}
-                  onClick={() => deleteContact(id)}
+                  onClick={() => {
+                    deleteContact(id);
+                    startPlaying();
+                  }}
                   aria-label="delete contact button"
                 >
                   <TiUserDeleteOutline size={20} />

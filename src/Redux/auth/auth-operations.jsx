@@ -3,7 +3,7 @@ import errorSound from 'assets/error-sound.mp3';
 import toastyMK from 'assets/Mortal_Kombat_4_Toasty_Sound_Effect.mp3';
 import Toasty from 'assets/toasty.webp';
 import { MdError } from 'react-icons/md';
-import Player from 'components/Player';
+import Player from 'components/Player/Player';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';

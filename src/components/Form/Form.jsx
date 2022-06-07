@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-
-import { TiUserAddOutline } from 'react-icons/ti';
+import addSound from 'assets/add-sound.mp3';
+import errorSound from 'assets/error-sound.mp3';
+import Player from 'components/Player';
+import { TiUserAddOutline, TiWarning } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 import styles from './styles.module.css';
 import {
@@ -11,7 +13,7 @@ import {
 const Form = () => {
   const [createContact] = useCreateContactMutation();
   const { data } = useGetContactsQuery();
-
+  const audio = new Audio(addSound);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
@@ -39,13 +41,25 @@ const Form = () => {
     );
 
     if (contactFinder) {
-      toast.warn(`${name} ${number} is already in contacts.`);
+      toast.warn(`${name} ${number} is already in contacts.`, {
+        icon: () => (
+          <>
+            <TiWarning size={30} color="var(--toastify-color-warning)" />
+            <Player url={errorSound} />
+          </>
+        ),
+      });
+      audio.pause();
       return;
     }
 
     createContact(contact);
 
     reset();
+  };
+
+  const startPlaying = () => {
+    audio.play();
   };
 
   return (
@@ -80,6 +94,7 @@ const Form = () => {
       </label>
 
       <button
+        onClick={startPlaying}
         className={styles.submitButton}
         type="submit"
         disabled={isDisabled}
