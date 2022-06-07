@@ -1,33 +1,36 @@
 {
   "files": {
     "main.css": "/goit-react-hw-08-phonebook/static/css/main.faa36be7.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.65e38760.js",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.f86dacc3.js",
     "contacts-page.css": "/goit-react-hw-08-phonebook/static/css/contacts-page.aee7becc.chunk.css",
-    "contacts-page.js": "/goit-react-hw-08-phonebook/static/js/contacts-page.7309c44f.chunk.js",
+    "contacts-page.js": "/goit-react-hw-08-phonebook/static/js/contacts-page.ffeeb02b.chunk.js",
     "login-page.css": "/goit-react-hw-08-phonebook/static/css/login-page.e88d1a65.chunk.css",
-    "login-page.js": "/goit-react-hw-08-phonebook/static/js/login-page.c275e35c.chunk.js",
+    "login-page.js": "/goit-react-hw-08-phonebook/static/js/login-page.69477de7.chunk.js",
     "register-page.css": "/goit-react-hw-08-phonebook/static/css/register-page.ef6328f6.chunk.css",
-    "register-page.js": "/goit-react-hw-08-phonebook/static/js/register-page.72c430bb.chunk.js",
+    "register-page.js": "/goit-react-hw-08-phonebook/static/js/register-page.ac1290da.chunk.js",
     "static/js/355.dde2d44d.chunk.js": "/goit-react-hw-08-phonebook/static/js/355.dde2d44d.chunk.js",
-    "static/js/583.2b1aae40.chunk.js": "/goit-react-hw-08-phonebook/static/js/583.2b1aae40.chunk.js",
+    "static/js/583.f73c11a3.chunk.js": "/goit-react-hw-08-phonebook/static/js/583.f73c11a3.chunk.js",
     "static/media/depositphotos_8138615-stock-photo-old-style-phone-over-yellow.jpg": "/goit-react-hw-08-phonebook/static/media/depositphotos_8138615-stock-photo-old-style-phone-over-yellow.c7f61031e29a619786d3.jpg",
+    "static/media/logout-sound.mp3": "/goit-react-hw-08-phonebook/static/media/logout-sound.be076647bc4b32769216.mp3",
     "static/media/error-sound.mp3": "/goit-react-hw-08-phonebook/static/media/error-sound.b1e6d296830be2bd9b69.mp3",
+    "static/media/add-sound.mp3": "/goit-react-hw-08-phonebook/static/media/add-sound.49fc018b060ea35d6840.mp3",
     "static/media/Mortal_Kombat_4_Toasty_Sound_Effect.mp3": "/goit-react-hw-08-phonebook/static/media/Mortal_Kombat_4_Toasty_Sound_Effect.9161aabf1d43489fe385.mp3",
+    "static/media/delete-sound.mp3": "/goit-react-hw-08-phonebook/static/media/delete-sound.24a5ed8c683bca72d673.mp3",
     "static/media/toasty.webp": "/goit-react-hw-08-phonebook/static/media/toasty.aab30d9885522462ba36.webp",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
     "main.faa36be7.css.map": "/goit-react-hw-08-phonebook/static/css/main.faa36be7.css.map",
-    "main.65e38760.js.map": "/goit-react-hw-08-phonebook/static/js/main.65e38760.js.map",
+    "main.f86dacc3.js.map": "/goit-react-hw-08-phonebook/static/js/main.f86dacc3.js.map",
     "contacts-page.aee7becc.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/contacts-page.aee7becc.chunk.css.map",
-    "contacts-page.7309c44f.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/contacts-page.7309c44f.chunk.js.map",
+    "contacts-page.ffeeb02b.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/contacts-page.ffeeb02b.chunk.js.map",
     "login-page.e88d1a65.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/login-page.e88d1a65.chunk.css.map",
-    "login-page.c275e35c.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/login-page.c275e35c.chunk.js.map",
+    "login-page.69477de7.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/login-page.69477de7.chunk.js.map",
     "register-page.ef6328f6.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/register-page.ef6328f6.chunk.css.map",
-    "register-page.72c430bb.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/register-page.72c430bb.chunk.js.map",
+    "register-page.ac1290da.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/register-page.ac1290da.chunk.js.map",
     "355.dde2d44d.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/355.dde2d44d.chunk.js.map",
-    "583.2b1aae40.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/583.2b1aae40.chunk.js.map"
+    "583.f73c11a3.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/583.f73c11a3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.faa36be7.css",
-    "static/js/main.65e38760.js"
+    "static/js/main.f86dacc3.js"
   ]
 }
