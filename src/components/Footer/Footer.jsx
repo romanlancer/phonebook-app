@@ -7,6 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <Navbar
+        className="flipInX"
         style={{ padding: '0rem' }}
         fixed="bottom"
         bg="dark"

@@ -4,7 +4,7 @@ import NavBar from 'components/NavBar';
 import { Container } from 'react-bootstrap';
 import { ScrollToTop } from 'react-to-top';
 import { ToastContainer, Flip } from 'react-toastify';
-
+import { CSSTransition } from 'react-transition-group';
 const Layout = () => (
   <>
     <NavBar />
@@ -23,8 +23,8 @@ const Layout = () => (
           draggable
           pauseOnHover
         />
-        <Outlet />
 
+        <Outlet />
         <ScrollToTop
           style={{ bottom: '50px' }}
           bgColor="var(--bs-dark-rgba)"

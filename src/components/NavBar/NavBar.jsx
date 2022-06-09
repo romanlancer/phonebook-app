@@ -10,6 +10,7 @@ const NavBar = () => {
   return (
     <header>
       <Navbar
+        className="flipInX"
         style={{ paddingTop: '0.3rem', paddingBottom: '0.3rem' }}
         fixed="top"
         bg="dark"

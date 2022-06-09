@@ -25,6 +25,11 @@
   width: 100%;
 }
 
+.listItemOut {
+  animation-name: fadeOut;
+  animation-duration: 1000ms;
+}
+
 .listItem:not(:last-child) {
   margin-bottom: 10px;
 }

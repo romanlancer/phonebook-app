@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { getFilter } from 'Redux/contacts/contactsSlice';
 import { SpinnerInfinity } from 'spinners-react';
 import deleteSound from 'assets/delete-sound.mp3';
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {
   useGetContactsQuery,
   useDeleteContactMutation,
@@ -38,31 +38,35 @@ const Contacts = () => {
   return (
     <>
       <ul className={styles.contactsList}>
-        {data &&
-          rendered.map(({ name, id, number }) => (
-            <li className={styles.listItem} key={id} id={id}>
-              <span className={styles.contactName}>{name}: </span>
-              <span className={styles.phoneNumber}>{number}</span>
-              <OverlayTrigger
-                placement="bottom"
-                overlay={
-                  <Tooltip id="button-tooltip-2">Click to delete</Tooltip>
-                }
-              >
-                <button
-                  type="button"
-                  className={styles.buttons}
-                  onClick={() => {
-                    deleteContact(id);
-                    startPlaying();
-                  }}
-                  aria-label="delete contact button"
-                >
-                  <TiUserDeleteOutline size={20} />
-                </button>
-              </OverlayTrigger>
-            </li>
-          ))}
+        <TransitionGroup component={null}>
+          {data &&
+            rendered.map(({ name, id, number }) => (
+              <CSSTransition key={id} timeout={500} classNames="item">
+                <li className={styles.listItem} key={id} id={id}>
+                  <span className={styles.contactName}>{name}: </span>
+                  <span className={styles.phoneNumber}>{number}</span>
+                  <OverlayTrigger
+                    placement="bottom"
+                    overlay={
+                      <Tooltip id="button-tooltip-2">Click to delete</Tooltip>
+                    }
+                  >
+                    <button
+                      type="button"
+                      className={styles.buttons}
+                      onClick={() => {
+                        deleteContact(id);
+                        startPlaying();
+                      }}
+                      aria-label="delete contact button"
+                    >
+                      <TiUserDeleteOutline size={20} />
+                    </button>
+                  </OverlayTrigger>
+                </li>
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
       </ul>
       {data && data.length === 0 && (
         <p style={{ textDecoration: 'underline' }}>no contacts available</p>

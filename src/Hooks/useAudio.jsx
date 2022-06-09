@@ -13,6 +13,7 @@ export const useAudio = url => {
     return () => {
       audio.removeEventListener('ended', () => setPlaying(false));
     };
+    // eslint-disable-next-line
   }, []);
 
   return [playing];
