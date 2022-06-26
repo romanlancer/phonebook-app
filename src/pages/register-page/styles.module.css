@@ -47,7 +47,7 @@ a:visited {
 .form > .submitButton,
 .form > textarea {
   font-family: 'Nunito', sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   padding: 0.25rem;
   border-radius: 0.5rem;
   border: 1px solid black;

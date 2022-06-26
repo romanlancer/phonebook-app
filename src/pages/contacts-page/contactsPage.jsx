@@ -12,7 +12,11 @@ import { useEffect } from 'react';
 const ContactsPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
+    try {
+      dispatch(authOperations.fetchCurrentUser());
+    } catch (error) {
+      dispatch(authOperations.logOut());
+    }
   }, [dispatch]);
 
   const isFetchingCurrentUser = useSelector(
