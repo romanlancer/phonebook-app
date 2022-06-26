@@ -4,7 +4,7 @@ import toastyMK from 'assets/Mortal_Kombat_4_Toasty_Sound_Effect.mp3';
 import Toasty from 'assets/toasty.webp';
 import { MdError } from 'react-icons/md';
 import Player from 'components/Player/Player';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, isRejectedWithValue } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
 
@@ -121,18 +121,7 @@ const fetchCurrentUser = createAsyncThunk(
 
       return data;
     } catch (error) {
-      if (error.response?.status === 401) {
-        token.unset();
-        toast.error('Sorry, your authorization token expired, please relogin', {
-          icon: () => (
-            <>
-              <MdError size={24} color="var(--toastify-color-error)" />
-              <Player url={errorSound} />
-            </>
-          ),
-        });
-        <Navigate to="/" />;
-      }
+      return thunkAPI.rejectWithValue();
     }
   }
 );
