@@ -98,6 +98,7 @@ const Form = () => {
         className={styles.submitButton}
         type="submit"
         disabled={isDisabled}
+        aria-label="add contact button"
       >
         add contact
         <TiUserAddOutline size={20} className={styles.icon} />

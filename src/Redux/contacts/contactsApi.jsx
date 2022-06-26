@@ -14,7 +14,7 @@ export const contactsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['contact'],
+  tagTypes: ['Сontact'],
   endpoints: builder => ({
     getContacts: builder.query({
       query: () => `/contacts`,
@@ -35,6 +35,14 @@ export const contactsApi = createApi({
       }),
       invalidatesTags: ['Contact'],
     }),
+    updateContact: builder.mutation({
+      query: ({ contactId, name, number }) => ({
+        url: `/contacts/${contactId}`,
+        method: 'PATCH',
+        body: { name, number },
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
   }),
 });
 
@@ -42,4 +50,5 @@ export const {
   useGetContactsQuery,
   useDeleteContactMutation,
   useCreateContactMutation,
+  useUpdateContactMutation,
 } = contactsApi;

@@ -15,6 +15,10 @@ const Register = lazy(() =>
   import('pages/register-page' /* webpackChunkName: "register-page" */)
 );
 
+const UpdatePage = lazy(() =>
+  import('pages/update-page' /* webpackChunkName: "update-page" */)
+);
+
 let progressInterval = null;
 
 const App = () => {
@@ -35,6 +39,22 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route
+          path="update/:contactId/*"
+          element={
+            <PrivateRoute
+              component={
+                <Suspense
+                  fallback={
+                    <ProgressBar variant="dark" animated now={progress} />
+                  }
+                >
+                  <UpdatePage />
+                </Suspense>
+              }
+            />
+          }
+        />
         <Route
           index
           element={
@@ -83,6 +103,7 @@ const App = () => {
             />
           }
         />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
