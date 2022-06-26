@@ -122,6 +122,7 @@ const fetchCurrentUser = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response?.status === 401) {
+        token.unset();
         toast.error('Sorry, your authorization token expired, please relogin', {
           icon: () => (
             <>

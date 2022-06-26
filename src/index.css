@@ -21,6 +21,7 @@ body {
   padding-bottom: 50px;
   background-image: url(./assets/depositphotos_8138615-stock-photo-old-style-phone-over-yellow.jpg);
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: 30%;
   background-position: 14% 30%;
 
