@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import LoadingScreen from 'components/LoadingScreen';
 import { MdError } from 'react-icons/md';
 import { useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+
 const ContactsPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,7 +28,7 @@ const ContactsPage = () => {
             </>
           ),
         });
-        <Navigate to="/LogIn" />;
+        dispatch(authOperations.logOut());
       });
   }, [dispatch]);
 
